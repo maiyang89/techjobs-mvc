@@ -38,7 +38,11 @@
 
     <div th:fragment="results">
 
+        <h3 th:if="${#lists.isEmpty(jobs)} and ${searchTerm != null}">0 Results</h3>
+
         <div th:if="${jobs} and ${jobs.size()}">
+
+            <h3 th:text="${jobs.size()} + ' Results'"></h3>
 
             <table th:class="job-listing" th:each="job : ${jobs}">
                 <tr th:each="field : ${job.entrySet()}">
@@ -48,6 +52,7 @@
             </table>
 
         </div>
+
 
     </div>
 
